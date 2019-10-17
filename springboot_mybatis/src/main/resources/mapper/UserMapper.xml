@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.itheima.mapper.UserMapper">
+    <!--还没使用-->
+    <resultMap id="userMap" type="com.itheima.domain.User">
+        <id column="id" property="id"/>
+        <result column="userName" property="userName"/>
+        <result column="userNickname" property="userNickname"/>
+        <result column="userPhoneNo" property="userPhoneNo"/>
+        <result column="userGender" property="userGender"/>
+        <result column="userMail" property="userMail"/>
+<!--
+        <association property="" column="">
+
+        </association>
+-->
+    </resultMap>
+    <!-- 对应的插入字段的名字 -->
+    <sql id="key">
+        <trim suffixOverrides=",">
+            <if test="userName != null and userName != ''">
+                user_name,
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                user_password,
+            </if>
+            <if test="userNickname != null and userNickname !=''">
+                user_nickname,
+            </if>
+            <if test="userPhoneNo != null and userPhoneNo != ''">
+                user_phone_no,
+            </if>
+            <if test="userGender != null and userGender !=''">
+                user_gender,
+            </if>
+            <if test="userMail != null and userMail != ''">
+                user_mail,
+            </if>
+            <if test="userBirthday != null and userBirthday != ''">
+                user_birthday,
+            </if>
+            <if test="userState != null and userState != ''">
+                user_state,
+            </if>
+            <if test="userIsAdministrator != null and userIsAdministrator != ''">
+                user_is_administrator,
+            </if>
+            <if test="userSort != null and userSort != ''">
+                user_sort,
+            </if>
+            <if test="userDepartment != null and userDepartment != ''">
+                user_department,
+            </if>
+            <if test="userPrivilege != null and userPrivilege != ''">
+                user_privilege,
+            </if>
+            <if test="userMotto != null and userMotto != ''">
+                user_motto,
+            </if>
+            <if test="userHobby != null and userHobby != ''">
+                user_hobby,
+            </if>
+            <if test="userNewpassword != null and userNewpassword != ''">
+                user_newpassword,
+            </if>
+        </trim>
+    </sql>
+
+    <!-- 对应的插入字段的值 -->
+    <sql id="values">
+        <trim suffixOverrides=",">
+            <if test="userName != null and userName != ''">
+                #{userName},
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                #{userPassword},
+            </if>
+            <if test="userNickname != null and userNickname !=''">
+                #{userNickname},
+            </if>
+            <if test="userPhoneNo != null and userPhoneNo != ''">
+                #{userPhoneNo},
+            </if>
+            <if test="userGender != null and userGender !=''">
+                #{userGender},
+            </if>
+            <if test="userMail != null and userMail != ''">
+                #{userMail},
+            </if>
+            <if test="userBirthday != null and userBirthday != ''">
+                #{userBirthday},
+            </if>
+            <if test="userState != null and userState != ''">
+                #{userState},
+            </if>
+            <if test="userIsAdministrator != null and userIsAdministrator != ''">
+                #{userIsAdministrator},
+            </if>
+            <if test="userSort != null and userSort != ''">
+                #{userSort},
+            </if>
+            <if test="userDepartment != null and userDepartment != ''">
+                #{userDepartment},
+            </if>
+            <if test="userPrivilege != null and userPrivilege != ''">
+                #{userPrivilege},
+            </if>
+            <if test="userMotto != null and userMotto != ''">
+                #{userMotto},
+            </if>
+            <if test="userHobby != null and userHobby != ''">
+                #{userHobby},
+            </if>
+            <if test="userNewpassword != null and userNewpassword != ''">
+                #{userNewpassword},
+            </if>
+        </trim>
+    </sql>
+
+    <!--添加用户信息-->
+    <insert id="insertUserInformation" parameterType="com.itheima.domain.User">
+        insert into user (<include refid="key"/>)
+            values (<include refid="values"/>)
+    </insert>
+
+    <!--更新用户信息-->
+    <update id="updateUserInfomation" parameterType="com.itheima.domain.User">
+        update user
+        <set>
+            <if test="userName != null and userName != ''">
+                 user_name = #{userName},
+            </if>
+            <if test="userPassword != null and userPassword != ''">
+                user_password = #{userPassword},
+            </if>
+            <if test="userNickname != null and userNickname !=''">
+                 user_nickname = #{userNickname},
+            </if>
+            <if test="userPhoneNo != null and userPhoneNo != ''">
+                 user_phone_no = #{userPhoneNo},
+            </if>
+            <if test="userGender != null and userGender !=''">
+                 user_gender = #{userGender},
+            </if>
+            <if test="userMail != null and userMail != ''">
+                 user_mail = #{userMail},
+            </if>
+            <if test="userBirthday != null and userBirthday != ''">
+                 user_birthday = #{userBirthday},
+            </if>
+            <if test="userState != null and userState != ''">
+                 user_state = #{userState},
+            </if>
+            <if test="userIsAdministrator != null and userIsAdministrator != ''">
+                 user_is_administrator = #{userIsAdministrator},
+            </if>
+            <if test="userSort != null and userSort != ''">
+                 user_sort = #{userSort},
+            </if>
+            <if test="userDepartment != null and userDepartment != ''">
+                user_department = #{userDepartment},
+            </if>
+            <if test="userPrivilege != null and userPrivilege != ''">
+                user_privilege = #{userPrivilege},
+            </if>
+            <if test="userMotto != null and userMotto != ''">
+                user_motto = #{userMotto},
+            </if>
+            <if test="userHobby != null and userHobby != ''">
+                user_hobby = #{userHobby},
+            </if>
+            <if test="userNewpassword != null and userNewpassword != ''">
+                user_newpassword = #{userNewpassword},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--删除指定用户-->
+    <delete id="deleteUserInfomation" parameterType="com.itheima.domain.User">
+        delete from user
+            <where>
+                <if test="id != null and id != ''">
+                    and id = #{id}
+                </if>
+                <if test="userName != null and userName != ''">
+                    and user_name = #{userName}
+                </if>
+                <if test="userNickname != null and userNickname !=''">
+                    and user_nickname = #{userNickname}
+                </if>
+                <if test="userPhoneNo != null and userPhoneNo != ''">
+                    and user_phone_no = #{userPhoneNo}
+                </if>
+                <if test="userGender != null and userGender !=''">
+                    and user_gender = #{userGender}
+                </if>
+                <if test="userMail != null and userMail != ''">
+                    and user_mail = #{userMail}
+                </if>
+                <if test="userBirthday != null and userBirthday != ''">
+                    and user_birthday = #{userBirthday}
+                </if>
+                <if test="userState != null and userState != ''">
+                    and user_state = #{userState}
+                </if>
+                <if test="userIsAdministrator != null and userIsAdministrator != ''">
+                    and user_is_administrator = #{userIsAdministrator}
+                </if>
+                <if test="userSort != null and userSort != ''">
+                    and user_sort = #{userSort}
+                </if>
+                <if test="userDepartment != null and userDepartment != ''">
+                    and user_department = #{userDepartment}
+                </if>
+                <if test="userPrivilege != null and userPrivilege != ''">
+                    and user_privilege = #{userPrivilege}
+                </if>
+                <if test="userMotto != null and userMotto != ''">
+                    and user_motto = #{userMotto}
+                </if>
+                <if test="userHobby != null and userHobby != ''">
+                    and user_hobby = #{userHobby}
+                </if>
+                <if test="userNewpassword != null and userNewpassword != ''">
+                    and user_newpassword = #{userNewpassword}
+                </if>
+            </where>
+    </delete>
+
+    <!--批量删除指定用户-->
+    <delete id="deleteMoreUserById" parameterType="list">
+        delete from user where id in
+            <foreach collection="list" item="id" index="arr"
+                     open="(" separator="," close=")">
+                #{id}
+            </foreach>
+    </delete>
+
+    <!--查询所有用户-->
+    <select id="queryUserList" resultType="com.itheima.domain.User">
+        select * from user
+    </select>
+
+    <!--查询总数-->
+    <select id="getUserTotalNumber" resultType="java.lang.Integer">
+        select count(*) from user
+    </select>
+
+    <!--单条件查询指定用户-->
+    <select id="queryUserSingleCondition" resultType="com.itheima.domain.User" parameterType="com.itheima.domain.User">
+        select * from user
+            <where>
+                <choose>
+                    <when test="id != null and id != ''">
+                        and id = #{id}
+                    </when>
+                    <when test="userName != null and userName != ''">
+                        and user_name like concat('%',#{userName},'%')
+                    </when>
+                    <when test="userNickname != null and userNickname !=''">
+                        and user_nickname like concat('%',#{userNickname},'%')
+                    </when>
+                    <when test="userPhoneNo != null and userPhoneNo != ''">
+                        and user_phone_no like concat('%',#{userPhoneNo},'%')
+                    </when>
+                    <when test="userGender != null and userGender !=''">
+                        and user_gender like concat('%',#{userGender},'%')
+                    </when>
+                    <when test="userMail != null and userMail != ''">
+                        and user_mail like concat('%',#{userMail},'%')
+                    </when>
+                    <otherwise>
+                        and id is not null
+                    </otherwise>
+                </choose>
+            </where>
+    </select>
+
+
+</mapper>
