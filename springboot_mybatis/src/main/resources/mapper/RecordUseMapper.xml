@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mapper.RecordUseMapper">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.itheima.pojo.RecordUse">
+        <result column="id" property="id"/>
+        <result column="record_property_id" property="recordPropertyId"/>
+        <result column="record_user_id" property="recordUserId"/>
+        <result column="record_use_start_time" property="recordUseStartTime"/>
+        <result column="record_use_return_time" property="recordUseReturnTime"/>
+        <result column="record_grant_user_id" property="recordGrantUserId"/>
+        <result column="record_return" property="recordReturn"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        record_property_id,
+        record_user_id,
+        record_use_start_time,
+        record_use_return_time,
+        record_grant_user_id,
+        record_return
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO record_use
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.recordPropertyId != null"> record_property_id, </if>
+            <if test="pojo.recordUserId != null"> record_user_id, </if>
+            <if test="pojo.recordUseStartTime != null"> record_use_start_time, </if>
+            <if test="pojo.recordUseReturnTime != null"> record_use_return_time, </if>
+            <if test="pojo.recordGrantUserId != null"> record_grant_user_id, </if>
+            <if test="pojo.recordReturn != null"> record_return, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.recordPropertyId != null"> #{pojo.recordPropertyId}, </if>
+            <if test="pojo.recordUserId != null"> #{pojo.recordUserId}, </if>
+            <if test="pojo.recordUseStartTime != null"> #{pojo.recordUseStartTime}, </if>
+            <if test="pojo.recordUseReturnTime != null"> #{pojo.recordUseReturnTime}, </if>
+            <if test="pojo.recordGrantUserId != null"> #{pojo.recordGrantUserId}, </if>
+            <if test="pojo.recordReturn != null"> #{pojo.recordReturn}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO record_use(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.recordPropertyId},
+            #{pojo.recordUserId},
+            #{pojo.recordUseStartTime},
+            #{pojo.recordUseReturnTime},
+            #{pojo.recordGrantUserId},
+            #{pojo.recordReturn}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE record_use
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.recordPropertyId != null"> record_property_id = #{pojo.recordPropertyId}, </if>
+            <if test="pojo.recordUserId != null"> record_user_id = #{pojo.recordUserId}, </if>
+            <if test="pojo.recordUseStartTime != null"> record_use_start_time = #{pojo.recordUseStartTime}, </if>
+            <if test="pojo.recordUseReturnTime != null"> record_use_return_time = #{pojo.recordUseReturnTime}, </if>
+            <if test="pojo.recordGrantUserId != null"> record_grant_user_id = #{pojo.recordGrantUserId}, </if>
+            <if test="pojo.recordReturn != null"> record_return = #{pojo.recordReturn} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM record_use
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.recordPropertyId != null"> AND record_property_id = #{pojo.recordPropertyId} </if>
+            <if test="pojo.recordUserId != null"> AND record_user_id = #{pojo.recordUserId} </if>
+            <if test="pojo.recordUseStartTime != null"> AND record_use_start_time = #{pojo.recordUseStartTime} </if>
+            <if test="pojo.recordUseReturnTime != null"> AND record_use_return_time = #{pojo.recordUseReturnTime} </if>
+            <if test="pojo.recordGrantUserId != null"> AND record_grant_user_id = #{pojo.recordGrantUserId} </if>
+            <if test="pojo.recordReturn != null"> AND record_return = #{pojo.recordReturn} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM record_use
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.recordPropertyId != null"> AND record_property_id = #{pojo.recordPropertyId} </if>
+            <if test="pojo.recordUserId != null"> AND record_user_id = #{pojo.recordUserId} </if>
+            <if test="pojo.recordUseStartTime != null"> AND record_use_start_time = #{pojo.recordUseStartTime} </if>
+            <if test="pojo.recordUseReturnTime != null"> AND record_use_return_time = #{pojo.recordUseReturnTime} </if>
+            <if test="pojo.recordGrantUserId != null"> AND record_grant_user_id = #{pojo.recordGrantUserId} </if>
+            <if test="pojo.recordReturn != null"> AND record_return = #{pojo.recordReturn} </if>
+        </where>
+    </delete>
+</mapper>

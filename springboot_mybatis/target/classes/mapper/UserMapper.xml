@@ -4,7 +4,7 @@
 
 <mapper namespace="com.itheima.mapper.UserMapper">
     <!--还没使用-->
-    <resultMap id="userMap" type="com.itheima.domain.User">
+    <resultMap id="userMap" type="com.itheima.pojo.User">
         <id column="id" property="id"/>
         <result column="userName" property="userName"/>
         <result column="userNickname" property="userNickname"/>
@@ -120,13 +120,13 @@
     </sql>
 
     <!--添加用户信息-->
-    <insert id="insertUserInformation" parameterType="com.itheima.domain.User">
+    <insert id="insertUserInformation" parameterType="com.itheima.pojo.User">
         insert into user (<include refid="key"/>)
             values (<include refid="values"/>)
     </insert>
 
     <!--更新用户信息-->
-    <update id="updateUserInfomation" parameterType="com.itheima.domain.User">
+    <update id="updateUserInfomation" parameterType="com.itheima.pojo.User">
         update user
         <set>
             <if test="userName != null and userName != ''">
@@ -179,7 +179,7 @@
     </update>
 
     <!--删除指定用户-->
-    <delete id="deleteUserInfomation" parameterType="com.itheima.domain.User">
+    <delete id="deleteUserInfomation" parameterType="com.itheima.pojo.User">
         delete from user
             <where>
                 <if test="id != null and id != ''">
@@ -240,7 +240,7 @@
     </delete>
 
     <!--查询所有用户-->
-    <select id="queryUserList" resultType="com.itheima.domain.User">
+    <select id="queryUserList" resultType="com.itheima.pojo.User">
         select * from user
     </select>
 
@@ -250,7 +250,7 @@
     </select>
 
     <!--单条件查询指定用户-->
-    <select id="queryUserSingleCondition" resultType="com.itheima.domain.User" parameterType="com.itheima.domain.User">
+    <select id="queryUserSingleCondition" resultType="com.itheima.pojo.User" parameterType="com.itheima.pojo.User">
         select * from user
             <where>
                 <choose>

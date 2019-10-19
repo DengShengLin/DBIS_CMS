@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mapper.RecordRepairMapper">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.itheima.pojo.RecordRepair">
+        <result column="id" property="id"/>
+        <result column="record_id" property="recordId"/>
+        <result column="repair_time" property="repairTime"/>
+        <result column="repair_cost" property="repairCost"/>
+        <result column="repair_finish_time" property="repairFinishTime"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        record_id,
+        repair_time,
+        repair_cost,
+        repair_finish_time
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO record_repair
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.recordId != null"> record_id, </if>
+            <if test="pojo.repairTime != null"> repair_time, </if>
+            <if test="pojo.repairCost != null"> repair_cost, </if>
+            <if test="pojo.repairFinishTime != null"> repair_finish_time, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.recordId != null"> #{pojo.recordId}, </if>
+            <if test="pojo.repairTime != null"> #{pojo.repairTime}, </if>
+            <if test="pojo.repairCost != null"> #{pojo.repairCost}, </if>
+            <if test="pojo.repairFinishTime != null"> #{pojo.repairFinishTime}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO record_repair(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.recordId},
+            #{pojo.repairTime},
+            #{pojo.repairCost},
+            #{pojo.repairFinishTime}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE record_repair
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.recordId != null"> record_id = #{pojo.recordId}, </if>
+            <if test="pojo.repairTime != null"> repair_time = #{pojo.repairTime}, </if>
+            <if test="pojo.repairCost != null"> repair_cost = #{pojo.repairCost}, </if>
+            <if test="pojo.repairFinishTime != null"> repair_finish_time = #{pojo.repairFinishTime} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM record_repair
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.recordId != null"> AND record_id = #{pojo.recordId} </if>
+            <if test="pojo.repairTime != null"> AND repair_time = #{pojo.repairTime} </if>
+            <if test="pojo.repairCost != null"> AND repair_cost = #{pojo.repairCost} </if>
+            <if test="pojo.repairFinishTime != null"> AND repair_finish_time = #{pojo.repairFinishTime} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM record_repair
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.recordId != null"> AND record_id = #{pojo.recordId} </if>
+            <if test="pojo.repairTime != null"> AND repair_time = #{pojo.repairTime} </if>
+            <if test="pojo.repairCost != null"> AND repair_cost = #{pojo.repairCost} </if>
+            <if test="pojo.repairFinishTime != null"> AND repair_finish_time = #{pojo.repairFinishTime} </if>
+        </where>
+    </delete>
+</mapper>

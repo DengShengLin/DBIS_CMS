@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itheima.mapper.PropertyMapper">
+
+<!--auto generated Code-->
+    <resultMap id="AllColumnMap" type="com.itheima.pojo.Property">
+        <result column="id" property="id"/>
+        <result column="property_name" property="propertyName"/>
+        <result column="property_brief" property="propertyBrief"/>
+        <result column="property_category" property="propertyCategory"/>
+        <result column="property_buy_time" property="propertyBuyTime"/>
+        <result column="property_belong" property="propertyBelong"/>
+        <result column="property_value_old" property="propertyValueOld"/>
+        <result column="property_value" property="propertyValue"/>
+    </resultMap>
+
+<!--auto generated Code-->
+    <sql id="all_column">
+        id,
+        property_name,
+        property_brief,
+        property_category,
+        property_buy_time,
+        property_belong,
+        property_value_old,
+        property_value
+    </sql>
+
+<!--auto generated Code-->
+    <insert id="insert">
+        INSERT INTO property
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> id, </if>
+            <if test="pojo.propertyName != null"> property_name, </if>
+            <if test="pojo.propertyBrief != null"> property_brief, </if>
+            <if test="pojo.propertyCategory != null"> property_category, </if>
+            <if test="pojo.propertyBuyTime != null"> property_buy_time, </if>
+            <if test="pojo.propertyBelong != null"> property_belong, </if>
+            <if test="pojo.propertyValueOld != null"> property_value_old, </if>
+            <if test="pojo.propertyValue != null"> property_value, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="pojo.id != null"> #{pojo.id}, </if>
+            <if test="pojo.propertyName != null"> #{pojo.propertyName}, </if>
+            <if test="pojo.propertyBrief != null"> #{pojo.propertyBrief}, </if>
+            <if test="pojo.propertyCategory != null"> #{pojo.propertyCategory}, </if>
+            <if test="pojo.propertyBuyTime != null"> #{pojo.propertyBuyTime}, </if>
+            <if test="pojo.propertyBelong != null"> #{pojo.propertyBelong}, </if>
+            <if test="pojo.propertyValueOld != null"> #{pojo.propertyValueOld}, </if>
+            <if test="pojo.propertyValue != null"> #{pojo.propertyValue}, </if>
+        </trim>
+    </insert>
+
+<!--auto generated Code-->
+    <insert id="insertList">
+        INSERT INTO property(
+        <include refid="all_column"/>
+        )VALUES
+        <foreach collection="pojos" item="pojo" index="index" separator=",">
+            (
+            #{pojo.id},
+            #{pojo.propertyName},
+            #{pojo.propertyBrief},
+            #{pojo.propertyCategory},
+            #{pojo.propertyBuyTime},
+            #{pojo.propertyBelong},
+            #{pojo.propertyValueOld},
+            #{pojo.propertyValue}
+            )
+        </foreach>
+    </insert>
+
+<!--auto generated Code-->
+    <update id="update">
+        UPDATE property
+        <set>
+            <if test="pojo.id != null"> id = #{pojo.id}, </if>
+            <if test="pojo.propertyName != null"> property_name = #{pojo.propertyName}, </if>
+            <if test="pojo.propertyBrief != null"> property_brief = #{pojo.propertyBrief}, </if>
+            <if test="pojo.propertyCategory != null"> property_category = #{pojo.propertyCategory}, </if>
+            <if test="pojo.propertyBuyTime != null"> property_buy_time = #{pojo.propertyBuyTime}, </if>
+            <if test="pojo.propertyBelong != null"> property_belong = #{pojo.propertyBelong}, </if>
+            <if test="pojo.propertyValueOld != null"> property_value_old = #{pojo.propertyValueOld}, </if>
+            <if test="pojo.propertyValue != null"> property_value = #{pojo.propertyValue} </if>
+        </set>
+         WHERE id = #{pojo.id}
+    </update>
+
+<!--auto generated Code-->
+    <select id="select" resultMap="AllColumnMap">
+        SELECT <include refid="all_column"/>
+        FROM property
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.propertyName != null"> AND property_name = #{pojo.propertyName} </if>
+            <if test="pojo.propertyBrief != null"> AND property_brief = #{pojo.propertyBrief} </if>
+            <if test="pojo.propertyCategory != null"> AND property_category = #{pojo.propertyCategory} </if>
+            <if test="pojo.propertyBuyTime != null"> AND property_buy_time = #{pojo.propertyBuyTime} </if>
+            <if test="pojo.propertyBelong != null"> AND property_belong = #{pojo.propertyBelong} </if>
+            <if test="pojo.propertyValueOld != null"> AND property_value_old = #{pojo.propertyValueOld} </if>
+            <if test="pojo.propertyValue != null"> AND property_value = #{pojo.propertyValue} </if>
+        </where>
+        LIMIT 1000 
+    </select>
+
+<!--auto generated Code-->
+    <delete id="delete">
+        DELETE FROM property
+        <where>
+            <if test="pojo.id != null"> AND id = #{pojo.id} </if>
+            <if test="pojo.propertyName != null"> AND property_name = #{pojo.propertyName} </if>
+            <if test="pojo.propertyBrief != null"> AND property_brief = #{pojo.propertyBrief} </if>
+            <if test="pojo.propertyCategory != null"> AND property_category = #{pojo.propertyCategory} </if>
+            <if test="pojo.propertyBuyTime != null"> AND property_buy_time = #{pojo.propertyBuyTime} </if>
+            <if test="pojo.propertyBelong != null"> AND property_belong = #{pojo.propertyBelong} </if>
+            <if test="pojo.propertyValueOld != null"> AND property_value_old = #{pojo.propertyValueOld} </if>
+            <if test="pojo.propertyValue != null"> AND property_value = #{pojo.propertyValue} </if>
+        </where>
+    </delete>
+</mapper>
